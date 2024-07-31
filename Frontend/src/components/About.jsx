@@ -37,7 +37,7 @@ Express.js, React.js, and Node.js to cutting-edge projects.
               </div>
               <br />
               <br />
-               <a href="src\assets\Puneet.pdf" download>
+               <a href="\Puneet.pdf" download>
                 <button className="btn-primary btn-1">Download CV</button>
                </a>
             </div>

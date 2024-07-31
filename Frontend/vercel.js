@@ -15,3 +15,12 @@
     }
   ]
 }
+{
+  "rewrites": [
+    {
+      "source": "/Puneet.pdf",
+      "destination": "/public/Puneet.pdf"
+    }
+  ]
+}
+
