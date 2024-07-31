@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const form = useRef();
+  const [alertMessage, setAlertMessage] = useState('');
 
-  const [status, setStatus] = useState({ type: '', message: '' });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`https://localhost:5000/send`, formData);
-      setStatus({ type: 'success', message: 'Message sent successfully!' });
-      setFormData({ name: '', email: '', message: '' }); // Clear form fields
-      setTimeout(() => setStatus({ type: '', message: '' }), 3000); // Hide message after 3 seconds
-      console.log(response.data);
-    } catch (error) {
-      setStatus({ type: 'error', message: 'Failed to send message' });
-      setTimeout(() => setStatus({ type: '', message: '' }), 3000); // Hide message after 3 seconds
-      console.error(error);
-    }
+
+    emailjs
+      .sendForm('service_4m5rbeg', 'template_6afewdo', form.current, {
+        publicKey: 'R7ZM5X8eDArdyv30C',
+      })
+      .then(
+        () => {
+          setAlertMessage('Message sent successfully!');
+          setTimeout(() => {
+            setAlertMessage('');
+          }, 3000);
+          form.current.reset();
+        },
+        (error) => {
+          setAlertMessage(`Failed to send message: ${error.text}`);
+          setTimeout(() => {
+            setAlertMessage('');
+          }, 3000);
+        },
+      );
   };
 
   const contact_info = [
@@ -46,37 +43,25 @@ const Contact = () => {
         </h3>
         <p className="text-gray-400 mt-3 text-lg">Get in touch</p>
 
-        {status.message && (
-          <p className={`text-white mt-4 ${status.type === 'error' ? 'bg-red-500' : 'bg-green-500'} p-2 rounded`}>
-            {status.message}
-          </p>
-        )}
-
         <div className="mt-16 flex md:flex-row flex-col gap-6 max-w-5xl bg-gray-800 mx-auto md:p-6 p-3 rounded-lg">
-          <form onSubmit={handleSubmit} className="flex flex-col flex-1 gap-5">
+          <form ref={form} onSubmit={sendEmail} className="flex flex-col flex-1 gap-5">
             <input
               type="text"
-              name="name"
+              name="from_name"
               placeholder="Your Name"
               className="px-2 py-1"
-              onChange={handleChange}
-              value={formData.name}
             />
             <input
               type="email"
-              name="email"
+              name="from_email"
               placeholder="Your Email"
               className="px-2 py-1"
-              onChange={handleChange}
-              value={formData.email}
             />
             <textarea
               name="message"
               placeholder="Your Message"
               rows={10}
               className="px-2 py-1"
-              onChange={handleChange}
-              value={formData.message}
             ></textarea>
             <button type="submit" className="btn-primary w-fit">
               Send Message
@@ -93,6 +78,11 @@ const Contact = () => {
             ))}
           </div>
         </div>
+        {alertMessage && (
+          <div className="alert mt-4 p-2 bg-cyan-600 text-white rounded">
+            {alertMessage}
+          </div>
+        )}
       </div>
     </section>
   );
