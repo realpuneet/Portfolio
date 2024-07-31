@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/send', formData);
+      const response = await axios.post('https://portafolia-de-puneet.vercel.app/send', formData);
       setStatus({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' }); // Clear form fields
       setTimeout(() => setStatus({ type: '', message: '' }), 3000); // Hide message after 3 seconds

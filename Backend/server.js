@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from your React app
+  origin: 'https://portafolia-de-puneet.vercel.app/', // Allow requests from your React app
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization'
 }));
