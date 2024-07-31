@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/send`, formData);
+      const response = await axios.post(`https://localhost:5000/send`, formData);
       setStatus({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' }); // Clear form fields
       setTimeout(() => setStatus({ type: '', message: '' }), 3000); // Hide message after 3 seconds
