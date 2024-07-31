@@ -13,10 +13,10 @@ import project4 from "../assets/portfolio.png";
 const Project = () => {
 
   const projects = [
-    {logo: project1, name:'My App', github: 'http://github.com/realpuneet/IMDB-CLONE'},
+    {logo: project1, name:'Movie App', github: 'http://github.com/realpuneet/IMDB-CLONE'},
     {logo: project2, name:'Job Search', github: 'http://github.com/realpuneet/IMDB-Clone'},
     {logo: project3, name:'Space Tourism', github: 'http://github.com/realpuneet/IMDB-Clone'},
-    {logo: project4, name:'Portfolio', github: 'http://github.com/realpuneet/IMDB-Clone'},
+    {logo: project4, name:'Portfolio', github: 'http://github.com/realpuneet/Portfolio'},
   ]
 
   return (
