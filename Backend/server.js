@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load environment variables from .env file
 
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -25,7 +26,7 @@ app.post('/send', (req, res) => {
     from: process.env.RECIPIENT_EMAIL, // Sender's email from form data
     to: email, // Email to receive the messages
     subject: `Message from ${name}`,
-    text: `Nam`, // Use the message field
+    text: `${message}`, // Use the message field
   };
 
   // Sending email
@@ -37,6 +38,13 @@ app.post('/send', (req, res) => {
     console.log('Email sent:', info.response);
     res.send('Email sent successfully.');
   });
+});
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
