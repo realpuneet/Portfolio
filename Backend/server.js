@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'https://portafolia-de-puneet.vercel.app/', // Allow requests from your React app
+  origin: 'https://portafolia-de-puneet.vercel.app', // Allow requests from your React app
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization'
 }));
@@ -27,12 +27,11 @@ app.post('/send', (req, res) => {
   });
 
   const mailOptions = {
-    from: process.env.GMAIL_USER, // Sender's email from form data
-    to: email, // Email to receive the messages
+    from: email, // Sender's email from form data
+    to: 'puneety259@gmail.com', // Email to receive the messages
     subject: `Message from ${name}`,
     text: `${message}`, // Use the message field
   };
-
   // Sending email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -45,10 +44,10 @@ app.post('/send', (req, res) => {
 });
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'Frontend/build')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Frontend/build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
