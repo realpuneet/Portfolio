@@ -27,7 +27,7 @@ app.post('/send', (req, res) => {
   });
 
   const mailOptions = {
-    from: process.env.RECIPIENT_EMAIL, // Sender's email from form data
+    from: process.env.GMAIL_USER, // Sender's email from form data
     to: email, // Email to receive the messages
     subject: `Message from ${name}`,
     text: `${message}`, // Use the message field
