@@ -9,14 +9,16 @@ import project1 from "../assets/project1.png";
 import project2 from "../assets/project-2.jpg";
 import project3 from "../assets/project_3.png";
 import project4 from "../assets/portfolio.png";
+import project5 from "../assets/webeventapp.png";
 
 const Project = () => {
 
   const projects = [
-    {logo: project1, name:'Movie App', github: 'http://github.com/realpuneet/IMDB-CLONE'},
-    {logo: project2, name:'Job Search', github: 'http://github.com/realpuneet/IMDB-Clone'},
-    {logo: project3, name:'Space Tourism', github: 'http://github.com/realpuneet/IMDB-Clone'},
-    {logo: project4, name:'Portfolio', github: 'http://github.com/realpuneet/Portfolio'},
+    {logo: project1, name:'Movie App', github: 'http://github.com/realpuneet/IMDB-CLONE', live:'https://imdb-clone-iota-eight.vercel.app/'},
+    {logo: project2, name:'Job Search', github: 'https://github.com/realpuneet/job-search-website', live:''},
+    {logo: project3, name:'Space Tourism', github: 'https://github.com/realpuneet/space-tourism-website', live:''},
+    {logo: project4, name:'Portfolio', github: 'http://github.com/realpuneet/Portfolio', live:'https://portafolia-de-puneet.vercel.app/'},
+    {logo: project5, name:'Live Event App', github: 'https://github.com/realpuneet/live-event-webApp', live:' '},
   ]
 
   return (
@@ -51,12 +53,15 @@ const Project = () => {
             projects?.map((proj, i)=>(
               <SwiperSlide>
               <div key={i} className="h-fit w-full p-2 bg-slate-700 rounded-xl">
+                <a href={proj.live} className="cursor-pointer" target="_blank">
                 <img src={proj.logo} alt="Project 1" className="rounded-lg" />
+                </a>
                 <h3 className="text-xl my-4">{proj.name}</h3>
                 <div className="flex gap-3">
                   <a
                     href={proj.github}
                     className="text-cyan-600 bg-gray-800 hover:underline px-2 py-1 inline-block"
+                    target="_blank"
                   >
                     Github
                   </a>
