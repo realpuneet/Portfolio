@@ -53,9 +53,8 @@ const Project = () => {
             projects?.map((proj, i)=>(
               <SwiperSlide>
               <div key={i} className="h-fit w-full p-2 bg-slate-700 rounded-xl">
-                <a href={proj.live} className="cursor-pointer" target="_blank">
+                
                 <img src={proj.logo} alt="Project 1" className="rounded-lg" />
-                </a>
                 <h3 className="text-xl my-4">{proj.name}</h3>
                 <div className="flex gap-3">
                   <a
