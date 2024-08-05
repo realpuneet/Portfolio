@@ -3,7 +3,7 @@ import aboutimg from '../assets/puneetup.png';
 
 const About = () => {
   const info = [
-    {text: 'Years Experience', count: '04'},
+    {text: 'Experience', count: '03 months'},
     {text: 'Completed Projects', count: '05'},
     {text: 'Companies Work', count: '01'},
   ]

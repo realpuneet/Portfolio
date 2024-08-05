@@ -49,17 +49,20 @@ const Contact = () => {
               type="text"
               name="from_name"
               placeholder="Your Name"
+              required
               className="px-2 py-1"
             />
             <input
               type="email"
               name="from_email"
               placeholder="Your Email"
+              required
               className="px-2 py-1"
             />
             <textarea
               name="message"
               placeholder="Your Message"
+              required
               rows={10}
               className="px-2 py-1"
             ></textarea>
