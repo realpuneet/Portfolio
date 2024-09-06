@@ -61,6 +61,7 @@ const Contact = () => {
               className="px-2 py-1"
               onChange={handleChange}
               value={formData.name}
+              required
             />
             <input
               type="email"
@@ -69,6 +70,7 @@ const Contact = () => {
               className="px-2 py-1"
               onChange={handleChange}
               value={formData.email}
+              required
             />
             <textarea
               name="message"
@@ -77,11 +79,13 @@ const Contact = () => {
               className="px-2 py-1"
               onChange={handleChange}
               value={formData.message}
+              required
             ></textarea>
             <button type="submit" className="btn-primary w-fit">
               Send Message
             </button>
           </form>
+
           <div className="flex flex-col gap-7">
             {contact_info.map((contact, i) => (
               <div key={i} className="flex gap-4 w-fit items-center">

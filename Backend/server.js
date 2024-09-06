@@ -7,7 +7,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' })); // Allow requests from your React app's origin
 
 app.post('/send', (req, res) => {
   const { name, email, message } = req.body;
@@ -22,10 +22,10 @@ app.post('/send', (req, res) => {
   });
 
   const mailOptions = {
-    from: process.env.RECIPIENT_EMAIL, // Sender's email from form data
-    to: email, // Email to receive the messages
+    from: process.env.GMAIL_USER, // Sender's email
+    to: process.env.RECIPIENT_EMAIL, // Your email to receive the messages
     subject: `Message from ${name}`,
-    text: `Nam`, // Use the message field
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`, // Include sender's name, email, and message
   };
 
   // Sending email
