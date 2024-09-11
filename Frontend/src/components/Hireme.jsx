@@ -1,5 +1,5 @@
 import React from "react";
-import hireMe from "../assets/hireMe.png";
+import hireMe from "../assets/Hireme1.png";
 const Hireme = () => {
   return (
     <section id="hireme" className="py-10 px-3 text-white">
@@ -31,7 +31,7 @@ const Hireme = () => {
         <img
           src={hireMe}
           alt=""
-          className="md:h-[30rem]  md:absolute lg:h-[39rem] h-80 lg:absolute bottom-0 -right-3 object-cover"
+          className="md:h-[30rem]  md:absolute lg:h-[37rem] h-80 lg:absolute bottom-0 -right-10 object-cover"
         />
       </div>
     </section>
